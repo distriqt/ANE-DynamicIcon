@@ -1,0 +1,11 @@
+title: ${project.name}
+show_downloads: false
+google_analytics:
+
+repository: distriqt/ANE-${project.name}
+exclude: ["_Sidebar.md, _Footer.md"]
+theme: jekyll-theme-minimal
+
+gems: 
+  - jekyll-redirect-from
+

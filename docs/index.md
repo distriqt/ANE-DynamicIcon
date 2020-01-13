@@ -1,7 +1,5 @@
-built by [distriqt //](https://airnativeextensions.com) 
 
 ![](images/hero.png)
-
 
 # DynamicIcon
 
@@ -48,8 +46,4 @@ You can purchase a license for using this extension:
 distriqt retains all copyright.
 
 
-
 ![](images/promo.png)
-
-
-
