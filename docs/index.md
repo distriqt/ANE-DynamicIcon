@@ -37,13 +37,13 @@ More information here:
 [com.distriqt.DynamicIcon](https://airnativeextensions.com/extension/com.distriqt.DynamicIcon)
 
 
-## License
+## Native Extensions
 
-You can purchase a license for using this extension:
+The highest quality and widest range of Native Extensions for Adobe AIR
+
+With many native extensions available, we are the largest provider of native extensions for AIR developers. Our mobile solutions allow developers to fast-forward development and focus on building great games and apps.
 
 [airnativeextensions.com](https://airnativeextensions.com/)
-
-distriqt retains all copyright.
 
 
 ![](images/promo.png)
