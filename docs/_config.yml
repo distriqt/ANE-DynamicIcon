@@ -1,8 +1,8 @@
-title: ${project.name}
+title: DynamicIcon
 show_downloads: false
 google_analytics:
 
-repository: distriqt/ANE-${project.name}
+repository: distriqt/ANE-DynamicIcon
 exclude: ["_Sidebar.md, _Footer.md"]
 theme: jekyll-theme-minimal
 

@@ -39,7 +39,6 @@ find . -iname '$WORKING_DIR/*.DS_Store' -delete
 APP_NAME=$(ls -1 $WORKING_DIR/Payload)
 
 rm -rf "$WORKING_DIR/Payload/$APP_NAME/_CodeSignature/"
-rm -f "$WORKING_DIR/Payload/$APP_NAME/embedded.mobileprovision"
 
 cp $INFO_PLIST "$WORKING_DIR/Payload/$APP_NAME/Info.plist"
 
@@ -52,8 +51,6 @@ WORKING_PROFILE_PLIST="$OUTPUT/$WORKING_PROFILE.plist"
 security cms -D -i "$WORKING_PROFILE" > "$WORKING_PROFILE_PLIST"
 
 
-# /usr/libexec/PlistBuddy  -x -c 'Print :Entitlements' "$WORKING_PROFILE_PLIST" > "$ENTITLEMENTS"
-    
 TEAM_IDENTIFIER=$(/usr/libexec/Plistbuddy -c "Print :TeamIdentifier:0" "$WORKING_PROFILE_PLIST")
 APPLICATION_IDENTIFIER_PREFIX=$(/usr/libexec/Plistbuddy -c "Print :ApplicationIdentifierPrefix:0" "$WORKING_PROFILE_PLIST")
 BUNDLE_IDENTIFIER=$(/usr/libexec/Plistbuddy -c "Print :CFBundleIdentifier" "$WORKING_DIR/Payload/$APP_NAME/Info.plist")
@@ -74,31 +71,20 @@ echo "\tPROVISIONING_GET_TASK_ALLOW = $PROVISIONING_GET_TASK_ALLOW"
 /usr/libexec/PlistBuddy -c "Add :get-task-allow bool $PROVISIONING_GET_TASK_ALLOW" "$ENTITLEMENTS"
 /usr/libexec/PlistBuddy -c "Add :keychain-access-groups array" "$ENTITLEMENTS"
 /usr/libexec/PlistBuddy -c "Add :keychain-access-groups:0 string $APPLICATION_IDENTIFIER_PREFIX.$BUNDLE_IDENTIFIER" "$ENTITLEMENTS"
-/usr/libexec/PlistBuddy -c "Add :aps-environment string $APS_ENVIRONMENT" "$ENTITLEMENTS"
-# /usr/libexec/PlistBuddy -c "Add :beta-reports-active bool $BETA_REPORTS" "$ENTITLEMENTS"
-
+if [ $APS_ENVIRONMENT ]; then
+    echo "Setting aps-environment=$APS_ENVIRONMENT" 
+    /usr/libexec/PlistBuddy -c "Add :aps-environment string $APS_ENVIRONMENT" "$ENTITLEMENTS"
+fi
+if [ $BETA_REPORTS ]; then
+    echo "Setting beta-reports-active=$BETA_REPORTS" 
+    /usr/libexec/PlistBuddy -c "Add :beta-reports-active bool $BETA_REPORTS" "$ENTITLEMENTS"
+fi
 cp "$ENTITLEMENTS" "$WORKING_DIR/Payload/$APP_NAME/archived-expanded-entitlements.xcent"
 
-# cat "$WORKING_DIR/Payload/$APP_NAME/archived-expanded-entitlements.xcent"
-
 #####################################
-# echo "Sign Frameworks" 
-
-# function sign_framework() {
-#     FRAMEWORK=$1.framework
-#     if [ -d "$WORKING_DIR/Payload/$APP_NAME/Frameworks/$FRAMEWORK" ];
-#     then
-#         codesign --force --sign "$SIGNING_IDENTITY" --verbose "$WORKING_DIR/Payload/$APP_NAME/Frameworks/$FRAMEWORK"
-#     fi
-# }
-
-# sign_framework FBAudienceNetwork
-
-#####################################
-echo "Sign Application"
+# echo "Sign Application"
 codesign --force --entitlements "$ENTITLEMENTS" --sign "$SIGNING_IDENTITY" "$WORKING_DIR/Payload/$APP_NAME" --verbose
 codesign --verify --verbose --deep --no-strict "$WORKING_DIR/Payload/$APP_NAME"
-
 
 
 OUTPUT_IPA="$OUTPUT/"$IPA_NAME"_resigned.ipa"
@@ -114,5 +100,4 @@ rm -f "$ENTITLEMENTS"
 rm -f "$WORKING_PROFILE_PLIST"
 rm -f "$WORKING_PROFILE"
 
-
-ideviceinstaller -i "$OUTPUT_IPA"
+# ideviceinstaller -i "$OUTPUT_IPA"
