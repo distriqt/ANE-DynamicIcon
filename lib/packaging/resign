@@ -9,11 +9,11 @@
 # The path to the ipa generated from your AIR application packaging
 IPA="/path/to/yourApp.ipa"
 
-# The distribution provisioning profile for your application
+# The provisioning profile for your application
 PROVISIONING_PROFILE="/path/to/profile.mobileprovision"
 
 # The name of the signing identity. You get this by running the following in a terminal 
-# and selecting the name of your distribution certificate:
+# and selecting the name of your certificate:
 # 
 # security find-identity -v -p codesigning
 SIGNING_IDENTITY="iPhone Distribution: XXXXXXXXX (XXXXX)"
