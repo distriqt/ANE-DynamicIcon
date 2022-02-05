@@ -2,4 +2,4 @@
 
 | Extension | Version | Android Lib | iOS Lib |
 | --- | --- | --- | --- |
-| com.distriqt.DynamicIcon | 1.0.27 |  |  |
+| com.distriqt.DynamicIcon | 1.0.28 |  |  |
