@@ -1,0 +1,28 @@
+{
+    "identifier": "com.distriqt.test",
+    "name": "TestDynamicIcon",
+    "filename": "TestDynamicIcon",
+    "version": "0.0.27",
+    "versionLabel": "",
+    "dependencies": [
+        {
+            "version": "1.0.28",
+            "id": "com.distriqt.DynamicIcon"
+        },
+        {
+            "version": "2.7.0",
+            "id": "starling"
+        },
+        {
+            "version": "4.1.1",
+            "id": "feathersui_MetalWorksMobileTheme"
+        },
+        {
+            "version": "4.1.1",
+            "id": "feathersui"
+        }
+    ],
+    "configuration": {},
+    "repositories": [],
+    "deployOptions": {}
+}

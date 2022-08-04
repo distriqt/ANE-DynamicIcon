@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<application xmlns="http://ns.adobe.com/air/application/32.0">
+<application xmlns="http://ns.adobe.com/air/application/33.1">
 	<id>com.distriqt.test</id>
 	<filename>TestDynamicIcon</filename>
 	<name>TestDynamicIcon</name>
@@ -18,15 +18,24 @@
         <image29x29>icons/icon29x29.png</image29x29>
         <image32x32>icons/icon32x32.png</image32x32>
         <image36x36>icons/icon36x36.png</image36x36>
+        <image40x40>icons/icon40x40.png</image40x40>
         <image48x48>icons/icon48x48.png</image48x48>
         <image57x57>icons/icon57x57.png</image57x57>
+        <image58x58>icons/icon58x58.png</image58x58>
+        <image60x60>icons/icon60x60.png</image60x60>
         <image72x72>icons/icon72x72.png</image72x72>
         <image76x76>icons/icon76x76.png</image76x76>
+        <image80x80>icons/icon80x80.png</image80x80>
+        <image87x87>icons/icon87x87.png</image87x87>
         <image114x114>icons/icon114x114.png</image114x114>
         <image120x120>icons/icon120x120.png</image120x120>
         <image128x128>icons/icon128x128.png</image128x128>
+        <image144x144>icons/icon144x144.png</image144x144>
         <image152x152>icons/icon152x152.png</image152x152>
+        <image167x167>icons/icon167x167.png</image167x167>
+        <image180x180>icons/icon180x180.png</image180x180>
         <image512x512>icons/icon512x512.png</image512x512>
+        <image1024x1024>icons/icon1024x1024.png</image1024x1024>
     </icon>
 
 	<iPhone>
@@ -37,12 +46,51 @@
 				<string>2</string>
 			</array>
 
-			<key>NSAppTransportSecurity</key>
-			<dict>
-				<key>NSAllowsArbitraryLoads</key>
-	  			<true/>
-			</dict>
-			
+            <key>MinimumOSVersion</key>
+            <string>12.0</string>
+
+			<key>UILaunchStoryboardName</key>
+            <string>LaunchScreen</string>
+
+            <!-- Unfortunately these aren't added currently we need to resign to add them -->
+            <key>CFBundleIcons</key>
+            <dict>
+                <key>CFBundleAlternateIcons</key>
+                <dict>
+                    <key>IconName</key>
+                    <dict>
+                        <key>CFBundleIconFiles</key>
+                        <array>
+                            <string>AlternateIcon</string>
+                        </array>
+                    </dict>
+                </dict>
+                <key>CFBundlePrimaryIcon</key>
+                <dict>
+                    <key>CFBundleIconFiles</key>
+                    <array>
+                        <string>Icon-Iphone-180.png</string>
+                        <string>Icon-Ipad-152.png</string>
+                        <string>Icon-167.png</string>
+                        <string>Icon@2x-Large.png</string>
+                        <string>Icon-Iphone-120.png</string>
+                        <string>Icon@2x.png</string>
+                        <string>Icon-Iphone-87.png</string>
+                        <string>Icon-Small-80.png</string>
+                        <string>Icon-Ipad-76.png</string>
+                        <string>Icon-Large.png</string>
+                        <string>Icon-Iphone-60.png</string>
+                        <string>Icon-Small@2x.png</string>
+                        <string>Icon.png</string>
+                        <string>Icon-Small-50.png</string>
+                        <string>Icon-Small-40.png</string>
+                        <string>Icon-Small.png</string>
+                    </array>
+                    <key>CFBundleIconName</key>
+                    <string>AppIcon</string>
+                </dict>
+            </dict>
+
 		]]></InfoAdditions>
 		<requestedDisplayResolution>high</requestedDisplayResolution>
 		<Entitlements>
@@ -54,7 +102,7 @@
 	<android>
 		<manifestAdditions><![CDATA[
 			<manifest android:installLocation="auto" >
-				<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="27" />
+				<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="31" />
 				<uses-permission android:name="android.permission.INTERNET"/>
 				
 				<application android:hardwareAccelerated="true">
